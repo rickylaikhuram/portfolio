@@ -14,7 +14,7 @@ export function ResumeButton({
   className = "",
 }: ResumeButtonProps) {
   return (
-    <a href="/resume.pdf" download target="_blank" rel="noopener noreferrer">
+    <a href="/rickyresume.pdf" download target="_blank" rel="noopener noreferrer">
       <Button className={`gap-2 ${className}`} variant={variant} size={size}>
         <Download className="h-4 w-4" />
         <span>Download Resume</span>
