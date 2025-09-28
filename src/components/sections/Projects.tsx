@@ -7,7 +7,7 @@ const projects = [
   {
     title: "E-commerce Website",
     live: "https://cloverarena.com",
-    github: "https://github.com/rickylaikhuram",
+    github: "https://github.com/rickylaikhuram/ecommerce-frontend",
     description:
       "Full-stack e-commerce platform with product management, wishlist, multi-step forms with drag-and-drop image reordering",
     tech: [
@@ -16,8 +16,9 @@ const projects = [
       "Redux",
       "Node.js",
       "Express.js",
-      "PostgreSQL",
       "Tailwind CSS",
+      "PostgreSQL",
+      "Redis",
       "AWS S3",
     ],
     features: [
@@ -30,7 +31,7 @@ const projects = [
   {
     title: "College Event Website",
     live: "https://resomit.online",
-    github: "https://github.com/rickylaikhuram",
+    github: "https://github.com/rickylaikhuram/resoui",
     description:
       "Event management system with real-time tracking, role-based access (Super Admin/Admin/User), multi-step registration",
     tech: [
@@ -51,7 +52,7 @@ const projects = [
   {
     title: "URL Shortener",
     live: undefined,
-    github: "https://github.com/rickylaikhuram",
+    github: "https://github.com/rickylaikhuram/urlShortner",
     description:
       "Lightweight URL shortening service with efficient redirects and optimized performance for handling high-volume requests",
     tech: [
@@ -68,7 +69,7 @@ const projects = [
   {
     title: "Job Portal (MERN)",
     live: undefined,
-    github: "https://github.com/rickylaikhuram",
+    github: "https://github.com/rickylaikhuram/Job_Portal",
     description:
       "Role-based job portal with recruiter panels and applicant management system for seamless job application processes",
     tech: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
