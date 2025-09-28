@@ -106,7 +106,7 @@ export default function About() {
                 className="group"
               >
                 <Card className="relative overflow-hidden rounded-3xl border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02]">
-                  <CardHeader className="pb-3">
+                  <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                       <info.icon className="h-5 w-5 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
                       <CardTitle className="text-base font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
@@ -116,7 +116,7 @@ export default function About() {
                     <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
                   </CardHeader>
                   
-                  <CardContent className="pt-1">
+                  <CardContent >
                     <p className="text-sm text-foreground/80 leading-relaxed">
                       {info.content}
                     </p>
