@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ResumeButton } from "@/components/ResumeButton";
 import { useState } from "react";
 
 export function Hero() {
