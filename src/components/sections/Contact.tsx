@@ -2,7 +2,14 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ResumeButton } from "@/components/ResumeButton";
-import { EmailIcon, GitHubIcon, InstagramIcon, LinkedInIcon, XTwitterIcon, YouTubeIcon } from "../ui/svg";
+import {
+  EmailIcon,
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XTwitterIcon,
+  YouTubeIcon,
+} from "../ui/svg";
 
 export default function Contact() {
   return (
@@ -16,7 +23,7 @@ export default function Contact() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-4">
-            Let's Connect
+            {"Let's Connect"}
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
             Feel free to reach out for collaborations, opportunities, or just to
