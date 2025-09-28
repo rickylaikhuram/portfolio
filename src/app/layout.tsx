@@ -5,7 +5,7 @@ import Script from "next/script";
 import ThemeProvider from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Ricky Laikhuram  Software Engineer & Developer Portfolio",
+  title: "Ricky Laikhuram | Software Engineer & Developer Portfolio",
   description:
     "Portfolio of Ricky Laikhuram, showcasing software engineering projects, web development skills, and contact info for collaborations.",
   keywords: [
