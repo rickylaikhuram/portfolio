@@ -1,38 +1,66 @@
 "use client";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Globe, Database, Wrench, Cloud, Zap } from "lucide-react";
-
+import {
+  Code2,
+  Globe,
+  Database,
+  Wrench,
+  Cloud,
+  Zap,
+  Server,
+  Layout,
+} from "lucide-react";
 const skills = [
   {
     title: "Programming Languages",
     items: ["JavaScript", "TypeScript", "Python", "C", "C++"],
-    icon: Code2
+    icon: Code2,
   },
   {
-    title: "Web & Frameworks",
-    items: ["HTML", "CSS", "React", "Node.js", "Express.js", "Tailwind CSS"],
-    icon: Globe
+    title: "Frontend Development",
+    items: ["React", "Next.js", "Tailwind CSS", "Redux"],
+    icon: Layout, // More specific icon
   },
-  { 
-    title: "Databases", 
-    items: ["PostgreSQL", "Firebase", "MongoDB"],
-    icon: Database
+  {
+    title: "Backend Development",
+    items: ["Node.js", "Express.js", "JWT (Authentication)", "Prisma (ORM)"],
+    icon: Server,
+  },
+  {
+    title: "Databases",
+    items: ["PostgreSQL", "MongoDB", "Firebase", "Redis"],
+    icon: Database,
+  },
+  {
+    title: "Cloud & DevOps",
+    items: [
+      "AWS (EC2, S3)",
+      "Cloudflare",
+      "Firebase Hosting",
+      "Docker",
+      "GitHub Actions",
+      "VPS Setup",
+    ],
+    icon: Cloud,
   },
   {
     title: "Development Tools",
-    items: ["Git", "Docker", "Postman", "VS Code", "GitHub", "GitHub Actions"],
-    icon: Wrench
+    items: ["Git", "Postman", "VS Code", "GitHub"],
+    icon: Wrench,
   },
   {
-    title: "Cloud & Hosting",
-    items: ["AWS (EC2, S3)", "Cloudflare", "Firebase Hosting", "VPS Setup"],
-    icon: Cloud
-  },
-  { 
-    title: "Core Concepts", 
-    items: ["OOP", "Web Application Development", "RESTful APIs", "Version Control"],
-    icon: Zap
+    title: "Core Concepts",
+    items: [
+      "OOP",
+      "Web Application Development",
+      "RESTful APIs",
+      "Version Control",
+      "State Management",
+      "Caching Strategies",
+      "CI/CD Pipeline",
+    ],
+    icon: Zap,
   },
 ];
 
@@ -51,7 +79,8 @@ export default function Skills() {
             Skills & Technologies
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and the tools I use to bring ideas to life
+            A comprehensive overview of my technical expertise and the tools I
+            use to bring ideas to life
           </p>
         </motion.div>
 
@@ -62,22 +91,24 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: idx * 0.1,
                 type: "spring",
-                stiffness: 100
+                stiffness: 100,
               }}
               className="group"
             >
-              <Card className={`
+              <Card
+                className={`
                 relative overflow-hidden rounded-3xl border-border/50 
                 bg-card/80 backdrop-blur-sm
                 hover:border-border transition-all duration-300
                 hover:shadow-xl hover:shadow-black/5
                 group-hover:scale-[1.02]
                 min-h-[280px] flex flex-col
-              `}>
+              `}
+              >
                 <CardHeader className="pb-4">
                   <div className="flex items-center gap-3 mb-2">
                     <category.icon className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
@@ -87,7 +118,7 @@ export default function Skills() {
                   </div>
                   <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
                 </CardHeader>
-                
+
                 <CardContent className="flex-1 pt-2">
                   <div className="grid grid-cols-1 gap-3">
                     {category.items.map((skill, skillIdx) => (
@@ -95,7 +126,7 @@ export default function Skills() {
                         key={skill}
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: (idx * 0.1) + (skillIdx * 0.05) }}
+                        transition={{ delay: idx * 0.1 + skillIdx * 0.05 }}
                         className="flex items-center group/item"
                       >
                         <div className="w-2 h-2 rounded-full bg-gradient-to-r from-foreground/40 to-foreground/20 mr-3 group-hover/item:from-foreground/60 group-hover/item:to-foreground/40 transition-all duration-200" />
