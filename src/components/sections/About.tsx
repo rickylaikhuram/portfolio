@@ -77,7 +77,7 @@ export default function About() {
                 </div>
                 
                 <div className="pt-4 mt-auto">
-                  <ResumeButton variant="outline" className="w-full" />
+                  <ResumeButton variant="outline" className="w-full cursor-pointer" />
                 </div>
               </CardContent>
 

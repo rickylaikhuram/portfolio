@@ -172,7 +172,7 @@ export default function Contact() {
           transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
           className="mt-12 flex flex-wrap justify-center gap-4"
         >
-          <ResumeButton />
+          <ResumeButton className="cursor-pointer" />
           <Button variant="outline" asChild>
             <a href="mailto:rickylaikhuramofficial@gmail.com">Send Email</a>
           </Button>

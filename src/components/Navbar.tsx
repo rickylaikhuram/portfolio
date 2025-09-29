@@ -189,7 +189,7 @@ export function Navbar() {
                   </li>
                 ))}
               </ul>
-              <ResumeButton variant="outline" />
+              <ResumeButton variant="outline" className="cursor-pointer"/>
               <ThemeToggle />
             </nav>
 
@@ -222,7 +222,7 @@ export function Navbar() {
                       </div>
 
                       <div className="mb-6 p-2">
-                        <ResumeButton variant="outline" className="w-full" />
+                        <ResumeButton variant="outline" className="w-full cursor-pointer" />
                       </div>
 
                       <div className="border-t border-border pt-6 mb-5">
