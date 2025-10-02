@@ -7,19 +7,21 @@ import { User, GraduationCap, Briefcase, Languages } from "lucide-react";
 const aboutInfo = [
   {
     title: "Education",
-    content: "Bachelor of Engineering in Computer Science (Aug 2021 - May 2025), Manipur Institute of Technology",
-    icon: GraduationCap
+    content:
+      "Bachelor of Engineering in Computer Science (Aug 2021 - May 2025), Manipur Institute of Technology",
+    icon: GraduationCap,
   },
   {
     title: "Recent Experience",
-    content: "Software Engineer Intern at Lamzing Technologies Pvt. Ltd. (Mar 2025 - Aug 2025) - Completed",
-    icon: Briefcase
+    content:
+      "Software Engineer Intern at Lamzing Technologies Pvt. Ltd. (Mar 2025 - Aug 2025) - Completed",
+    icon: Briefcase,
   },
   {
     title: "Languages",
     content: "English, Hindi, Manipuri (Native)",
-    icon: Languages
-  }
+    icon: Languages,
+  },
 ];
 
 export default function About() {
@@ -37,7 +39,8 @@ export default function About() {
             About Me
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            Passionate developer focused on creating meaningful digital experiences
+            A web developer exploring new tech and learning to become a better
+            engineer.
           </p>
         </motion.div>
 
@@ -47,37 +50,46 @@ export default function About() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ 
+            transition={{
               duration: 0.5,
               type: "spring",
-              stiffness: 100
+              stiffness: 100,
             }}
-
             className="group"
           >
             <Card className="relative overflow-hidden rounded-3xl border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02] min-h-[280px] flex flex-col">
-              <CardHeader className="pb-4">
+              <CardHeader className="">
                 <div className="flex items-center gap-3 mb-2">
                   <User className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
                   <CardTitle className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                    My Journey
+                    My Path in Tech
                   </CardTitle>
                 </div>
                 <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
               </CardHeader>
-              
-              <CardContent className="flex-1 pt-2 flex flex-col">
+
+              <CardContent className="flex-1 flex flex-col">
                 <div className="flex-1">
                   <p className="text-sm text-foreground/80 leading-relaxed mb-4">
-                    I am passionate about building clean, scalable, and resilient web applications. I enjoy solving complex problems and crafting delightful user experiences using modern tools.
+                    I develop full-stack web applications professionally and
+                    through freelance work, partnering with clients to bring
+                    their ideas to life.
+                  </p>
+                  <p className="text-sm text-foreground/80 leading-relaxed mb-1">
+                    Currently learning machine learning and AI to broaden my
+                    technical capabilities.
                   </p>
                   <p className="text-sm text-foreground/80 leading-relaxed">
-                    With a strong foundation in full-stack development, I thrive on transforming ideas into functional, user-friendly digital solutions that make a real impact.
+                    I believe in growing through each project and creating
+                    software that makes a difference.
                   </p>
                 </div>
-                
+
                 <div className="pt-4 mt-auto">
-                  <ResumeButton variant="outline" className="w-full cursor-pointer" />
+                  <ResumeButton
+                    variant="outline"
+                    className="w-full cursor-pointer"
+                  />
                 </div>
               </CardContent>
 
@@ -96,13 +108,12 @@ export default function About() {
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ 
+                transition={{
                   duration: 0.5,
                   delay: idx * 0.1,
                   type: "spring",
-                  stiffness: 100
+                  stiffness: 100,
                 }}
-
                 className="group"
               >
                 <Card className="relative overflow-hidden rounded-3xl border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02]">
@@ -115,8 +126,8 @@ export default function About() {
                     </div>
                     <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
                   </CardHeader>
-                  
-                  <CardContent >
+
+                  <CardContent>
                     <p className="text-sm text-foreground/80 leading-relaxed">
                       {info.content}
                     </p>

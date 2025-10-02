@@ -9,6 +9,9 @@ export default function Footer() {
         <p className="text-sm text-foreground/70">
           © {new Date().getFullYear()} Ricky Laikhuram. All rights reserved.
         </p>
+        <p className="text-sm text-foreground/50 md:ml-2">
+          Based in Manipur, India
+        </p>
         <nav className="flex flex-wrap items-center gap-4 text-sm">
           <button
             className="hover:text-primary transition-colors"
@@ -18,9 +21,9 @@ export default function Footer() {
           </button>
           <button
             className="hover:text-primary transition-colors"
-            onClick={() => go("skills")}
+            onClick={() => go("experience")}
           >
-            Skills
+            Experience
           </button>
           <button
             className="hover:text-primary transition-colors"
@@ -30,9 +33,9 @@ export default function Footer() {
           </button>
           <button
             className="hover:text-primary transition-colors"
-            onClick={() => go("experience")}
+            onClick={() => go("skills")}
           >
-            Experience
+            Skills
           </button>
           <button
             className="hover:text-primary transition-colors"

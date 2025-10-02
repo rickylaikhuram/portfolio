@@ -16,9 +16,9 @@ export default function HomePage() {
       <main className="mx-auto max-w-none">
         <Hero />
         <About />
-        <Skills />
-        <Projects />
         <Experience />
+        <Projects />
+        <Skills />
         <Contact />
       </main>
       <Footer />
