@@ -1,9 +1,82 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  FileJson,
+  Code2,
+  Layers,
+  Rocket,
+  Paintbrush,
+  Workflow,
+  Server,
+  Network,
+  Database,
+  Cloud,
+  Briefcase,
+  Boxes,
+  Globe,
+  BookOpen,
+  Route,
+} from "lucide-react";
+import { type ForwardRefExoticComponent, type RefAttributes } from "react";
+import { type LucideProps } from "lucide-react";
 
-const projects = [
+type Tech =
+  | "TypeScript"
+  | "React"
+  | "Redux"
+  | "Node.js"
+  | "Express.js"
+  | "Tailwind CSS"
+  | "PostgreSQL"
+  | "Redis"
+  | "AWS S3"
+  | "MongoDB"
+  | "JavaScript"
+  | "React Router DOM"
+  | "Strapi CMS"
+  | "REST APIs"
+  | "Markdown";
+
+type IconType = ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+>;
+
+interface Project {
+  title: string;
+  live?: string;
+  github?: string;
+  description: string;
+  tech: Tech[];
+  features: string[];
+  time: string;
+  badge?: { label: string; icon: IconType };
+}
+
+// ---------- ICON MAPPING ----------
+const techIcons: Record<Tech, IconType> = {
+  TypeScript: Code2,
+  React: Layers,
+  Redux: Workflow,
+  "Node.js": Server,
+  "Express.js": Network,
+  "Tailwind CSS": Paintbrush,
+  PostgreSQL: Database,
+  Redis: Boxes,
+  "AWS S3": Cloud,
+  MongoDB: Database,
+  JavaScript: FileJson,
+  "React Router DOM": Route,
+  "Strapi CMS": Globe,
+  "REST APIs": Server,
+  Markdown: BookOpen,
+};
+
+// ---------- PROJECT DATA ----------
+const projects: Project[] = [
   {
     title: "E-commerce Website",
     live: "https://cloverarena.com",
@@ -27,13 +100,36 @@ const projects = [
       "AWS S3 presigned uploads",
     ],
     time: "2025",
+    badge: { label: "Freelance", icon: Briefcase },
   },
   {
-    title: "College Event Website",
+    title: "Blogging Platform",
+    live: "https://tathyapulse.com/",
+    description:
+      "Developed a blogging platform for a client to showcase their work and content. Implemented React Router DOM for seamless page navigation and integrated Strapi CMS to dynamically render markdown blog posts.",
+    tech: [
+      "React",
+      "React Router DOM",
+      "JavaScript",
+      "Strapi CMS",
+      "REST APIs",
+      "Markdown",
+    ],
+    features: [
+      "Implemented client-side routing for blog navigation",
+      "Integrated Strapi CMS backend APIs with React frontend",
+      "Built dynamic markdown content rendering system",
+      "Created seamless content management experience for client",
+    ],
+    time: "2025",
+    badge: { label: "Internship", icon: Briefcase },
+  },
+  {
+    title: "Event Platform",
     live: "https://resomit.online",
     github: "https://github.com/rickylaikhuram/resoui",
     description:
-      "Event management system with real-time tracking, role-based access (Super Admin/Admin/User), multi-step registration",
+      "Official event management platform for my college, featuring real-time tracking, role-based access (Super Admin/Admin/User), and multi-step registration for college events.",
     tech: [
       "TypeScript",
       "React",
@@ -48,10 +144,10 @@ const projects = [
       "React Hook Form (35% error reduction, 42% better completion rates)",
     ],
     time: "2025",
+    badge: { label: "College", icon: Rocket },
   },
   {
     title: "URL Shortener",
-    live: undefined,
     github: "https://github.com/rickylaikhuram/urlShortner",
     description:
       "Lightweight URL shortening service with efficient redirects and optimized performance for handling high-volume requests",
@@ -68,7 +164,6 @@ const projects = [
   },
   {
     title: "Job Portal (MERN)",
-    live: undefined,
     github: "https://github.com/rickylaikhuram/Job_Portal",
     description:
       "Role-based job portal with recruiter panels and applicant management system for seamless job application processes",
@@ -82,10 +177,12 @@ const projects = [
   },
 ];
 
+// ---------- COMPONENT ----------
 export default function Projects() {
   return (
     <section id="projects" className="py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +199,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Mobile: Simple card layout */}
+        {/* Mobile: Card layout */}
         <div className="md:hidden space-y-6">
           {projects.map((project, idx) => (
             <motion.div
@@ -114,13 +211,18 @@ export default function Projects() {
               className="group"
             >
               <div className="bg-card/80 backdrop-blur border border-border/50 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] flex flex-col">
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
                     {project.title}
                   </h3>
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-muted/30 border border-border/30 text-foreground/70">
-                    {project.time}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {project.badge && (
+                      <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
+                        <project.badge.icon className="w-3 h-3" />
+                        {project.badge.label}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="flex-1 mb-4">
@@ -131,56 +233,72 @@ export default function Projects() {
 
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.slice(0, 4).map((tech) => (
-                      <div key={tech} className="flex items-center group/item">
-                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-foreground/40 to-foreground/20 mr-2 group-hover/item:from-foreground/60 group-hover/item:to-foreground/40 transition-all duration-200" />
-                        <span className="text-xs font-medium text-foreground/70 group-hover/item:text-foreground/90 transition-colors duration-200">
-                          {tech}
-                        </span>
-                      </div>
-                    ))}
+                    {project.tech.slice(0, 4).map((tech) => {
+                      const Icon = techIcons[tech] || Code2;
+                      return (
+                        <div
+                          key={tech}
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200 group/item"
+                        >
+                          <Icon className="h-3.5 w-3.5 text-foreground/60 group-hover/item:text-foreground transition-colors" />
+                          <span className="text-xs font-medium text-foreground/70 group-hover/item:text-foreground transition-colors">
+                            {tech}
+                          </span>
+                        </div>
+                      );
+                    })}
                     {project.tech.length > 4 && (
-                      <span className="text-xs text-foreground/60">
+                      <span className="text-xs text-foreground/60 px-2.5 py-1">
                         +{project.tech.length - 4} more
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="flex gap-3">
-                  {project.live && (
-                    <Button
-                      size="sm"
-                      asChild
-                      className="flex items-center gap-2"
-                    >
-                      <a href={project.live} target="_blank" rel="noreferrer">
-                        <ExternalLink className="w-3 h-3" />
-                        Live
-                      </a>
-                    </Button>
-                  )}
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    asChild
-                    className="flex items-center gap-2"
-                  >
-                    <a href={project.github} target="_blank" rel="noreferrer">
-                      <Github className="w-3 h-3" />
-                      GitHub
-                    </a>
-                  </Button>
+                <div className="flex justify-between">
+                  <div className="flex gap-3">
+                    {project.live && (
+                      <Button
+                        size="sm"
+                        asChild
+                        className="flex items-center gap-2"
+                      >
+                        <a href={project.live} target="_blank" rel="noreferrer">
+                          <ExternalLink className="w-3 h-3" />
+                          Live
+                        </a>
+                      </Button>
+                    )}
+                    {project.github && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        asChild
+                        className="flex items-center gap-2"
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Github className="w-3 h-3" />
+                          GitHub
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-muted/30 border border-border/30 text-foreground/70">
+                    {project.time}
+                  </span>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Desktop: GitHub-style timeline */}
+        {/* Desktop: Timeline layout */}
         <div className="hidden md:block">
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-border transform -translate-x-px"></div>
 
             {projects
@@ -206,38 +324,41 @@ export default function Projects() {
                     </span>
                   </div>
 
-                  {/* Project content */}
+                  {/* Content */}
                   <div className="flex-1">
                     <div className="bg-card/80 backdrop-blur border border-border/50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:bg-card/90 transition-all duration-300 hover:scale-[1.01] relative overflow-hidden">
-                      <h4 className="text-lg font-semibold mb-3 text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-3">
-                        {project.title}
-                        <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent flex-1" />
-                      </h4>
+                      <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+                        <h4 className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-3">
+                          {project.title}
+                          <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent w-16" />
+                        </h4>
+                        {project.badge && (
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
+                            <project.badge.icon className="w-3.5 h-3.5" />
+                            {project.badge.label}
+                          </span>
+                        )}
+                      </div>
 
                       <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
                         {project.description}
                       </p>
 
-                      <div className="grid grid-cols-1 gap-3 mb-4">
-                        {project.tech.slice(0, 6).map((tech, techIdx) => (
-                          <motion.div
-                            key={tech}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1 + techIdx * 0.05 }}
-                            className="flex items-center group/item"
-                          >
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-foreground/40 to-foreground/20 mr-3 group-hover/item:from-foreground/60 group-hover/item:to-foreground/40 transition-all duration-200" />
-                            <span className="text-xs font-medium text-foreground/70 group-hover/item:text-foreground transition-colors duration-200">
-                              {tech}
-                            </span>
-                          </motion.div>
-                        ))}
-                        {project.tech.length > 6 && (
-                          <span className="text-xs text-foreground/50 ml-5">
-                            +{project.tech.length - 6} more technologies
-                          </span>
-                        )}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tech.map((tech) => {
+                          const Icon = techIcons[tech] || Code2;
+                          return (
+                            <div
+                              key={tech}
+                              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200 group/item"
+                            >
+                              <Icon className="h-3.5 w-3.5 text-foreground/60 group-hover/item:text-foreground transition-colors" />
+                              <span className="text-xs font-medium text-foreground/70 group-hover/item:text-foreground transition-colors">
+                                {tech}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
 
                       <div className="flex gap-3">
@@ -259,25 +380,26 @@ export default function Projects() {
                             </a>
                           </Button>
                         )}
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          asChild
-                          className="h-8 text-xs"
-                        >
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center gap-1.5"
+                        {project.github && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            asChild
+                            className="h-8 text-xs"
                           >
-                            <Github className="w-3 h-3" />
-                            Code
-                          </a>
-                        </Button>
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="flex items-center gap-1.5"
+                            >
+                              <Github className="w-3 h-3" />
+                              Code
+                            </a>
+                          </Button>
+                        )}
                       </div>
 
-                      {/* Subtle background pattern */}
                       <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
                         <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-2xl" />
                       </div>
@@ -288,21 +410,6 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Bottom decoration */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 border border-border/30">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-sm text-foreground/60 font-medium">
-              More projects in development
-            </span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

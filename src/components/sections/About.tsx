@@ -143,21 +143,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Bottom decoration */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 border border-border/30">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-sm text-foreground/60 font-medium">
-              Ready to collaborate and create
-            </span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
