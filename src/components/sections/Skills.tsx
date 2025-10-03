@@ -8,7 +8,6 @@ import {
   Server,
   Layout,
   Lock,
-  Package,
   Boxes,
   Workflow,
   GitBranch,
@@ -22,8 +21,8 @@ import {
   Layers,
   Network,
   Container,
-  Github,
 } from "lucide-react";
+import { GitHubIcon } from "../ui/svg";
 
 const skills = [
   {
@@ -81,7 +80,7 @@ const skills = [
     title: "Development Tools",
     items: [
       { name: "Git", icon: GitBranch },
-      { name: "GitHub", icon: Github },
+      { name: "GitHub", icon: GitHubIcon },
       { name: "Postman", icon: Network },
       { name: "VS Code", icon: Code2 },
     ],
