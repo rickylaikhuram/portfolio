@@ -110,7 +110,7 @@ const projects: Project[] = [
     tech: [
       "React",
       "React Router DOM",
-      "JavaScript",
+      "TypeScript",
       "Strapi CMS",
       "REST APIs",
       "Markdown",
