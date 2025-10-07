@@ -8,11 +8,15 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Ricky Laikhuram, showcasing software engineering projects, web development skills, and contact info for collaborations.",
   keywords: [
+    "Ricky Laikhuram",
     "Software Engineer",
     "Web Developer",
     "React",
     "Next.js",
     "Portfolio",
+    "Full Stack Developer",
+    "Web Development",
+    "Projects",
   ],
   authors: [
     { name: "Ricky Laikhuram", url: "https://rickylaikhuram.pages.dev" },
