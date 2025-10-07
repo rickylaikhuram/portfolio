@@ -45,16 +45,6 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="antialiased font-sans scroll-smooth bg-background text-foreground transition-colors duration-300">
         <ErrorReporter />
-        <Script
-          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
-          strategy="afterInteractive"
-          data-target-origin="*"
-          data-message-type="ROUTE_CHANGE"
-          data-include-search-params="true"
-          data-only-in-iframe="true"
-          data-debug="true"
-          data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
-        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
