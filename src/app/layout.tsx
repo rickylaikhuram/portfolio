@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ErrorReporter from "@/components/ErrorReporter";
-import Script from "next/script";
 import ThemeProvider from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -25,12 +24,21 @@ export const metadata: Metadata = {
     url: "https://rickylaikhuram.pages.dev",
     siteName: "Ricky Laikhuram Portfolio",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ricky Laikhuram Portfolio Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ricky Laikhuram | Software Engineer & Developer Portfolio",
     description:
       "Portfolio of Ricky Laikhuram, showcasing software engineering projects, web development skills, and contact info for collaborations.",
+    images: ["/og-image.png"], 
     site: "@ricky_laikhuram",
     creator: "@ricky_laikhuram",
   },
