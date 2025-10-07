@@ -139,37 +139,53 @@ export function Navbar() {
               onClick={() => scrollTo("hero")}
               className="flex items-center gap-2 hover:opacity-80 transition-all duration-300 group relative"
             >
-              <div className="relative h-8 w-8 overflow-hidden">
-                {/* Profile Image (shows when scrolled) */}
-                <div
-                  className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                    showProfileImage
-                      ? "opacity-100 scale-100 rotate-0"
-                      : "opacity-0 scale-75 -rotate-90"
-                  }`}
-                >
-                  <Image
-                    src="/profile.jpg"
-                    alt="Ricky Laikhuram"
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 rounded-full object-cover ring-1 ring-border"
-                    onError={(e) => {
-                      console.log("Image failed to load:", e);
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
+              <div className="relative flex items-center gap-3 overflow-hidden">
+                {/* Profile Image Container */}
+                <div className="relative h-8 w-8 flex-shrink-0 overflow-hidden">
+                  {/* Profile Image (shows when scrolled) */}
+                  <div
+                    className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                      showProfileImage
+                        ? "opacity-100 scale-100 rotate-0"
+                        : "opacity-0 scale-75 -rotate-90"
+                    }`}
+                  >
+                    <Image
+                      src="/profile.jpg"
+                      alt="Ricky Laikhuram"
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 rounded-full object-cover ring-1 ring-border"
+                      onError={(e) => {
+                        console.log("Image failed to load:", e);
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  </div>
+
+                  {/* Initial Logo (shows initially) */}
+                  <div
+                    className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                      !showProfileImage
+                        ? "opacity-100 scale-100 rotate-0"
+                        : "opacity-0 scale-75 rotate-90"
+                    }`}
+                  >
+                    <TerminalLogo className="h-8 w-8" />
+                  </div>
                 </div>
 
-                {/* Initial Logo (shows initially) */}
+                {/* Name (shows with profile image) */}
                 <div
-                  className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                    !showProfileImage
-                      ? "opacity-100 scale-100 rotate-0"
-                      : "opacity-0 scale-75 rotate-90"
+                  className={`transition-all duration-500 ease-in-out ${
+                    showProfileImage
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 -translate-x-4 pointer-events-none"
                   }`}
                 >
-                  <TerminalLogo className="h-8 w-8" />
+                  <span className="text-sm sm:text-base font-semibold whitespace-nowrap">
+                    Ricky Laikhuram
+                  </span>
                 </div>
               </div>
             </button>
@@ -189,7 +205,7 @@ export function Navbar() {
                   </li>
                 ))}
               </ul>
-              <ResumeButton variant="outline" className="cursor-pointer"/>
+              <ResumeButton variant="outline" className="cursor-pointer" />
               <ThemeToggle />
             </nav>
 
@@ -222,7 +238,10 @@ export function Navbar() {
                       </div>
 
                       <div className="mb-6 p-2">
-                        <ResumeButton variant="outline" className="w-full cursor-pointer" />
+                        <ResumeButton
+                          variant="outline"
+                          className="w-full cursor-pointer"
+                        />
                       </div>
 
                       <div className="border-t border-border pt-6 mb-5">
