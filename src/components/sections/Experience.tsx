@@ -53,9 +53,9 @@ export default function Experience() {
               <div className="grid grid-cols-1 gap-3">
                 {[
                   "Convert satellite terrain data into 3D-printable models",
-                  "Built scalable blogging platform using Strapi and React (25% faster development)",
-                  "Developed responsive UI components and API integrations",
-                  "Agile collaboration using Git and software design principles",
+                  "Built scalable blogging platform using Strapi and React with efficient content management",
+                  "Developed responsive UI components and integrated REST APIs",
+                  "Collaborated in Agile teams using Git and software design principles",
                 ].map((achievement, idx) => (
                   <motion.div
                     key={achievement}
