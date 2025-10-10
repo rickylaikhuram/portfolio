@@ -20,6 +20,11 @@ import {
   Globe,
   BookOpen,
   Route,
+  Zap,
+  Palette,
+  icons,
+  Icon,
+  AppWindow,
 } from "lucide-react";
 import { type ForwardRefExoticComponent, type RefAttributes } from "react";
 import { type LucideProps } from "lucide-react";
@@ -31,6 +36,7 @@ type Tech =
   | "Node.js"
   | "Express.js"
   | "Tailwind CSS"
+  | "Next.js"
   | "PostgreSQL"
   | "Redis"
   | "AWS S3"
@@ -39,6 +45,8 @@ type Tech =
   | "React Router DOM"
   | "Strapi CMS"
   | "REST APIs"
+  | "Shadcn/ui"
+  | "Lucide React"
   | "Markdown";
 
 type IconType = ForwardRefExoticComponent<
@@ -73,10 +81,34 @@ const techIcons: Record<Tech, IconType> = {
   "Strapi CMS": Globe,
   "REST APIs": Server,
   Markdown: BookOpen,
+  "Next.js": Zap,
+  "Shadcn/ui": Palette,
+  "Lucide React": AppWindow,
 };
 
 // ---------- PROJECT DATA ----------
 const projects: Project[] = [
+  {
+    title: "RandomHub",
+    live: "https://randomhub.app",
+    description:
+      "Multi-generator platform with 15+ client-side generators (password, names, QR codes, lorem ipsum, JSON formatter, text converter, wheel spinner, and more) with zero backend dependencies.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn/ui",
+      "Lucide React",
+    ],
+    features: [
+      "15+ standalone generators",
+      "Client-side only (no backend)",
+      "Perfect Lighthouse scores (98 Performance, 100 Accessibility, 100 Best Practices, 100 SEO)",
+      "localStorage theme persistence",
+    ],
+    time: "2025",
+    badge: { label: "Personal", icon: Rocket },
+  },
   {
     title: "E-commerce Website",
     live: "https://cloverarena.com",
@@ -409,7 +441,6 @@ export default function Projects() {
               ))}
           </div>
         </div>
-
       </div>
     </section>
   );
