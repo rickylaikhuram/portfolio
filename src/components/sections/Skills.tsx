@@ -22,13 +22,12 @@ import {
   Network,
   Container,
   Award,
-  Trophy,
 } from "lucide-react";
 import { GitHubIcon } from "../ui/svg";
 
 type SkillItem = {
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   subtext?: string;
   link?: string;
 };
@@ -36,7 +35,7 @@ type SkillItem = {
 type SkillCategory = {
   title: string;
   items: SkillItem[];
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
 };
 
 const skills: SkillCategory[] = [
@@ -106,7 +105,7 @@ const skills: SkillCategory[] = [
     items: [
       {
         name: "Software Engineer",
-        icon: Trophy,
+        icon: Award,
         subtext: "HackerRank",
         link: "https://www.hackerrank.com/certificates/74e960fd1d5e",
       },

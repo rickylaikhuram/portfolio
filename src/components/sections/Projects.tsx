@@ -22,8 +22,6 @@ import {
   Route,
   Zap,
   Palette,
-  icons,
-  Icon,
   AppWindow,
 } from "lucide-react";
 import { type ForwardRefExoticComponent, type RefAttributes } from "react";
