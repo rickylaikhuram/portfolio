@@ -21,10 +21,26 @@ import {
   Layers,
   Network,
   Container,
+  Award,
+  Medal,
+  Trophy,
 } from "lucide-react";
 import { GitHubIcon } from "../ui/svg";
 
-const skills = [
+type SkillItem = {
+  name: string;
+  icon: React.ComponentType<any>;
+  subtext?: string;
+  link?: string;
+};
+
+type SkillCategory = {
+  title: string;
+  items: SkillItem[];
+  icon: React.ComponentType<any>;
+};
+
+const skills: SkillCategory[] = [
   {
     title: "Programming Languages",
     items: [
@@ -86,6 +102,18 @@ const skills = [
     ],
     icon: Settings,
   },
+  {
+    title: "Certifications",
+    items: [
+      {
+        name: "Software Engineer",
+        icon: Trophy,
+        subtext: "HackerRank",
+        link: "https://www.hackerrank.com/certificates/74e960fd1d5e",
+      },
+    ],
+    icon: Award,
+  },
 ];
 
 export default function Skills() {
@@ -104,7 +132,7 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
           {skills.map((category, idx) => (
             <motion.div
               key={category.title}
@@ -117,7 +145,7 @@ export default function Skills() {
                 type: "spring",
                 stiffness: 100,
               }}
-              className="group"
+              className="group w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.333rem)]"
             >
               <Card
                 className={`
@@ -150,12 +178,40 @@ export default function Skills() {
                         whileHover={{ scale: 1.05 }}
                         className="group/item"
                       >
-                        <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200">
-                          <skill.icon className="h-4 w-4 text-foreground/60 group-hover/item:text-foreground transition-colors" />
-                          <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors">
-                            {skill.name}
-                          </span>
-                        </div>
+                        {skill.link ? (
+                          <a
+                            href={skill.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-col gap-1 px-3 py-2 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200 cursor-pointer"
+                          >
+                            <div className="flex items-center gap-2">
+                              <skill.icon className="h-4 w-4 text-foreground/60 group-hover/item:text-foreground transition-colors" />
+                              <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors">
+                                {skill.name}
+                              </span>
+                            </div>
+                            {skill.subtext && (
+                              <span className="text-xs text-foreground/50 pl-6">
+                                {skill.subtext}
+                              </span>
+                            )}
+                          </a>
+                        ) : (
+                          <div className="flex flex-col gap-1 px-3 py-2 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200">
+                            <div className="flex items-center gap-2">
+                              <skill.icon className="h-4 w-4 text-foreground/60 group-hover/item:text-foreground transition-colors" />
+                              <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors">
+                                {skill.name}
+                              </span>
+                            </div>
+                            {skill.subtext && (
+                              <span className="text-xs text-foreground/50 pl-6">
+                                {skill.subtext}
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </motion.div>
                     ))}
                   </div>
