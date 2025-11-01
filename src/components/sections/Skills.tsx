@@ -22,7 +22,6 @@ import {
   Network,
   Container,
   Award,
-  Medal,
   Trophy,
 } from "lucide-react";
 import { GitHubIcon } from "../ui/svg";
