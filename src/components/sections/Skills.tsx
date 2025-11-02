@@ -22,6 +22,7 @@ import {
   Network,
   Container,
   Award,
+  Trophy,
 } from "lucide-react";
 import { GitHubIcon } from "../ui/svg";
 
@@ -105,7 +106,7 @@ const skills: SkillCategory[] = [
     items: [
       {
         name: "Software Engineer",
-        icon: Award,
+        icon: Trophy,
         subtext: "HackerRank",
         link: "https://www.hackerrank.com/certificates/74e960fd1d5e",
       },
