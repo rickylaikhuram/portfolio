@@ -26,7 +26,7 @@ export const projects: Project[] = [
       "Room-based matchmaking and role assignment",
       "Responsive, mobile-friendly UI",
     ],
-    time: "2025",
+    time: "2026",
     badge: { label: "Assessment Project", icon: Brain },
   },
 
