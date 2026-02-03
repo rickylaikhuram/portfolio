@@ -86,7 +86,7 @@ export function Navbar() {
         href="https://linkedin.com/in/rickylaikhuram"
         target="_blank"
         rel="noreferrer"
-        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200"
+        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
         aria-label="LinkedIn"
       >
         <LinkedInIcon className="h-4 w-4" />
@@ -95,7 +95,7 @@ export function Navbar() {
         href="https://github.com/rickylaikhuram"
         target="_blank"
         rel="noreferrer"
-        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200"
+        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
         aria-label="GitHub"
       >
         <GitHubIcon className="h-4 w-4" />
@@ -104,7 +104,7 @@ export function Navbar() {
         href="https://www.instagram.com/ricky_laikhuram"
         target="_blank"
         rel="noreferrer"
-        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200"
+        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
         aria-label="Instagram"
       >
         <InstagramIcon className="h-4 w-4" />
@@ -113,7 +113,7 @@ export function Navbar() {
         href="https://www.youtube.com/@ricky_laikhuram"
         target="_blank"
         rel="noreferrer"
-        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200"
+        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
         aria-label="YouTube"
       >
         <YouTubeIcon className="h-4 w-4" />
@@ -122,7 +122,7 @@ export function Navbar() {
         href="https://x.com/ricky_laikhuram"
         target="_blank"
         rel="noreferrer"
-        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200"
+        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
         aria-label="X (Twitter)"
       >
         <XTwitterIcon className="h-4 w-4" />
@@ -137,7 +137,7 @@ export function Navbar() {
           <div className="h-16 flex items-center justify-between">
             <button
               onClick={() => scrollTo("hero")}
-              className="flex items-center gap-2 hover:opacity-80 transition-all duration-300 group relative"
+              className="flex items-center gap-2 hover:opacity-80 transition-all duration-300 group relative cursor-pointer"
             >
               <div className="relative flex items-center gap-3 overflow-hidden">
                 {/* Profile Image Container */}
@@ -195,7 +195,7 @@ export function Navbar() {
                 {SECTIONS.map((s) => (
                   <li key={s.id}>
                     <button
-                      className={`text-sm font-medium transition-colors hover:text-primary ${
+                      className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer${
                         active === s.id ? "text-primary" : "text-foreground/80"
                       }`}
                       onClick={() => scrollTo(s.id)}
@@ -216,7 +216,7 @@ export function Navbar() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="transition-transform duration-200 ease-out hover:scale-105"
+                    className="transition-transform duration-200 ease-out hover:scale-105 cursor-pointer"
                   >
                     <Menu className="h-5 w-5" />
                   </Button>
