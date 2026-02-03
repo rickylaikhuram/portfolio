@@ -64,7 +64,7 @@ export function Navbar() {
       {SECTIONS.map((s) => (
         <button
           key={s.id}
-          className={`text-left px-4 py-3 text-sm font-medium transition-colors duration-200 rounded-lg ${
+          className={`text-left px-4 py-3 text-sm font-medium transition-colors duration-200 rounded-lg cursor-pointer ${
             active === s.id
               ? "text-foreground bg-background"
               : "text-foreground/70 hover:text-foreground hover:bg-background/50"
@@ -195,7 +195,7 @@ export function Navbar() {
                 {SECTIONS.map((s) => (
                   <li key={s.id}>
                     <button
-                      className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer${
+                      className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
                         active === s.id ? "text-primary" : "text-foreground/80"
                       }`}
                       onClick={() => scrollTo(s.id)}
