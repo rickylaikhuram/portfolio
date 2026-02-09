@@ -29,7 +29,35 @@ export const projects: Project[] = [
     time: "2026",
     badge: { label: "Assessment Project", icon: Brain },
   },
-
+  {
+    title: "AI-Powered RFP Management System - Procurement Automation Platform",
+    github:
+      "https://github.com/rickylaikhuram/ai-powered-rfp-management-system",
+    description:
+      "A comprehensive procurement platform that streamlines the Request for Proposal workflow using AI, enabling natural language RFP creation, automated vendor management, email distribution, and intelligent proposal comparison.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "Google Gemini API",
+      "Nodemailer",
+      "IMAP",
+      "Tailwind CSS",
+    ],
+    features: [
+      "Conversational AI interface for natural language RFP creation",
+      "Multi-turn chat sessions with context-aware RFP refinement",
+      "Automated vendor email distribution via SMTP",
+      "IMAP-based email polling for vendor response collection",
+      "AI-powered proposal parsing from emails and PDF attachments",
+      "Intelligent proposal comparison with scoring and recommendations",
+    ],
+    time: "2026",
+    badge: { label: "Full-Stack Project", icon: Brain },
+  },
   {
     title: "RandomHub",
     live: "https://randomhub.app",

@@ -8,8 +8,10 @@ import {
   Database,
   FileJson,
   Globe,
+  Inbox,
   Layers,
   LucideProps,
+  Mail,
   Network,
   Paintbrush,
   Palette,
@@ -43,7 +45,10 @@ type Tech =
   | "Markdown"
   | "Socket.io"
   | "WebSockets"
-  | "Google Gemini API";
+  | "Google Gemini API"
+  | "Prisma"
+  | "Nodemailer"
+  | "IMAP";
 
 type IconType = ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
@@ -83,4 +88,7 @@ export const techIcons: Record<Tech, IconType> = {
   "Socket.io": Radio,
   WebSockets: Wifi,
   "Google Gemini API": Brain,
+  Prisma: Database,           // Database ORM
+  Nodemailer: Mail,            // Email sending
+  IMAP: Inbox,
 };
