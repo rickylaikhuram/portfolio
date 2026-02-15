@@ -105,28 +105,6 @@ export const projects: Project[] = [
     badge: { label: "Freelance", icon: Briefcase },
   },
   {
-    title: "Blogging Platform",
-    live: "https://tathyapulse.com/",
-    description:
-      "Developed a blogging platform for a client to showcase their work and content. Implemented React Router DOM for seamless page navigation and integrated Strapi CMS to dynamically render markdown blog posts.",
-    tech: [
-      "React",
-      "React Router DOM",
-      "TypeScript",
-      "Strapi CMS",
-      "REST APIs",
-      "Markdown",
-    ],
-    features: [
-      "Implemented client-side routing for blog navigation",
-      "Integrated Strapi CMS backend APIs with React frontend",
-      "Built dynamic markdown content rendering system",
-      "Created seamless content management experience for client",
-    ],
-    time: "2025",
-    badge: { label: "Internship", icon: Briefcase },
-  },
-  {
     title: "Event Platform",
     live: "https://resomit.online",
     github: "https://github.com/rickylaikhuram/resoui",
