@@ -35,7 +35,7 @@ export default function Experience() {
               <div className="flex items-center gap-3 mb-2">
                 <Building2 className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
                 <CardTitle className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                  Software Engineer – Internship
+                  Software Engineer - Internship
                 </CardTitle>
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -43,7 +43,7 @@ export default function Experience() {
                   Lamzing Technologies Pvt. Ltd.
                 </p>
                 <span className="px-2 py-1 rounded-full text-xs sm:text-sm font-medium bg-muted/30 border border-border/30 text-foreground/70 w-fit">
-                  Mar 2025 – Aug 2025
+                  April 2025 - Aug 2025
                 </span>
               </div>
               <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent mt-3" />
