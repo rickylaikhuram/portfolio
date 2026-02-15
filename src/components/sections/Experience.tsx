@@ -43,7 +43,7 @@ export default function Experience() {
                   Lamzing Technologies Pvt. Ltd.
                 </p>
                 <span className="px-2 py-1 rounded-full text-xs sm:text-sm font-medium bg-muted/30 border border-border/30 text-foreground/70 w-fit">
-                  Apr 2025 - Aug 2025
+                  Apr - Aug 2025
                 </span>
               </div>
               <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent mt-3" />
