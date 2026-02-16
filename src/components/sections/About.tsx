@@ -14,7 +14,7 @@ const aboutInfo = [
   {
     title: "Recent Experience",
     content:
-      "Software Engineer Intern at Lamzing Technologies Pvt. Ltd. (Mar 2025 - Aug 2025) - Completed",
+      "Software Developer at Laxxa Innovations Pvt. Ltd. (Feb 2026 - Present)",
     icon: Briefcase,
   },
   {
