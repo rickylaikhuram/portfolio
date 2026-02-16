@@ -26,8 +26,10 @@ export const experiences: ExperienceItem[] = [
     period: "Feb 2026 - Present",
     current: true,
     achievements: [
-      "Developed and maintained scalable web applications using React and Node.js",
-      "Improved application performance by 30% through code optimization and refactoring",
+      "Working as a core engineer contributing to the development of the startup’s primary product",
+      "Actively building and shaping foundational features from the ground up",
+      "Collaborating closely with the team to translate product vision into scalable solutions",
+      "Contributing to architectural decisions and overall product direction",
     ],
     icon: Building2,
     order: 2,
