@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Building2 } from "lucide-react";
+import { sortedExperiences } from "@/data/experiences";
 
 export default function Experience() {
   return (
@@ -23,62 +23,87 @@ export default function Experience() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="group max-w-4xl mx-auto"
-        >
-          <Card className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02] min-h-[280px] flex flex-col">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-3 mb-2">
-                <Building2 className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
-                <CardTitle className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                  Software Engineer - Internship
-                </CardTitle>
-              </div>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <p className="text-sm text-foreground/70 font-medium">
-                  Lamzing Technologies Pvt. Ltd.
-                </p>
-                <span className="px-2 py-1 rounded-full text-xs sm:text-sm font-medium bg-muted/30 border border-border/30 text-foreground/70 w-fit">
-                  Apr - Aug 2025
-                </span>
-              </div>
-              <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent mt-3" />
-            </CardHeader>
-
-            <CardContent className="flex-1 pt-2">
-              <div className="grid grid-cols-1 gap-3">
-                {[
-                  "Convert satellite terrain data into 3D-printable models",
-                  "Built scalable blogging platform using Strapi and React with efficient content management",
-                  "Developed responsive UI components and integrated REST APIs",
-                  "Collaborated in Agile teams using Git and software design principles",
-                ].map((achievement, idx) => (
-                  <motion.div
-                    key={achievement}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 + idx * 0.1, ease: "easeOut" }}
-                    className="flex items-start group/item"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-foreground/40 to-foreground/20 mr-3 mt-2 group-hover/item:from-foreground/60 group-hover/item:to-foreground/40 transition-all duration-200 flex-shrink-0" />
-                    <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors duration-200 leading-relaxed">
-                      {achievement}
+        <div className="space-y-6 max-w-4xl mx-auto">
+          {sortedExperiences.map((exp, index) => (
+            <motion.div
+              key={exp.id}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.4,
+                ease: "easeOut",
+                delay: index * 0.1,
+              }}
+              className="group"
+            >
+              <Card className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02] min-h-[280px] flex flex-col">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <exp.icon className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
+                    <CardTitle className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
+                      {exp.role}
+                    </CardTitle>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                      <p className="text-sm text-foreground/70 font-medium">
+                        {exp.company}
+                      </p>
+                      {exp.location && (
+                        <>
+                          <span className="hidden sm:inline text-foreground/30">
+                            •
+                          </span>
+                          <p className="text-sm text-foreground/60">
+                            {exp.location}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs sm:text-sm font-medium border w-fit ${
+                        exp.current
+                          ? "bg-green-500/10 border-green-500/30 text-green-600 dark:text-green-400"
+                          : "bg-muted/30 border-border/30 text-foreground/70"
+                      }`}
+                    >
+                      {exp.period}
                     </span>
-                  </motion.div>
-                ))}
-              </div>
-            </CardContent>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent mt-3" />
+                </CardHeader>
 
-            {/* Subtle background pattern */}
-            <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-              <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-2xl" />
-            </div>
-          </Card>
-        </motion.div>
+                <CardContent className="flex-1 pt-2">
+                  <div className="grid grid-cols-1 gap-3">
+                    {exp.achievements.map((achievement, idx) => (
+                      <motion.div
+                        key={`${exp.id}-achievement-${idx}`}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: 0.2 + index * 0.1 + idx * 0.05,
+                          ease: "easeOut",
+                        }}
+                        className="flex items-start group/item"
+                      >
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-foreground/40 to-foreground/20 mr-3 mt-2 group-hover/item:from-foreground/60 group-hover/item:to-foreground/40 transition-all duration-200 flex-shrink-0" />
+                        <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors duration-200 leading-relaxed">
+                          {achievement}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </CardContent>
+
+                {/* Subtle background pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                  <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-2xl" />
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Bottom decoration */}
         <motion.div
