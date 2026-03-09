@@ -14,7 +14,7 @@ const aboutInfo = [
   {
     title: "Recent Experience",
     content:
-      "Software Developer at Laxxa Innovations Pvt. Ltd. (Feb 2026 - Present)",
+      "Associate Full Stack Developer at Openthrive (Mar 2026 - Present)",
     icon: Briefcase,
   },
   {
