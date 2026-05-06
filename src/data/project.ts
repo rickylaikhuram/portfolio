@@ -106,7 +106,7 @@ export const projects: Project[] = [
   },
   {
     title: "Event Platform",
-    live: "https://resomit.online",
+    live: "https://resoui.pages.dev/",
     github: "https://github.com/rickylaikhuram/resoui",
     description:
       "Official event management platform for my college, featuring real-time tracking, role-based access (Super Admin/Admin/User), and multi-step registration for college events.",
