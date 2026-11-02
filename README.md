@@ -104,6 +104,8 @@ Build the project:
 npm run build
 ```
 
+For Cloudflare Pages, use `npm run build` as the build command and `out` as the output directory. This portfolio is configured as a static Next.js export, so `@cloudflare/next-on-pages` is not required.
+
 ## License
 
 Personal portfolio website - feel free to use as inspiration for your own portfolio.
