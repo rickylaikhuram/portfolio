@@ -11,9 +11,10 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      <div className="site-grid pointer-events-none absolute inset-x-0 top-0 h-[700px] opacity-60" />
       <Navbar />
-      <main className="mx-auto max-w-none">
+      <main className="relative mx-auto max-w-none pt-16">
         <Hero />
         <About />
         <Experience />

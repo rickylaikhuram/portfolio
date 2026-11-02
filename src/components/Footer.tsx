@@ -4,14 +4,10 @@ export default function Footer() {
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   return (
-    <footer className="py-10 border-t border-border">
-      <div className="mx-auto max-w-6xl px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-foreground/70">
-          © {new Date().getFullYear()} Ricky Laikhuram. All rights reserved.
-        </p>
-        <p className="text-sm text-foreground/50 md:ml-2">
-          Based in Manipur, India
-        </p>
+    <footer className="border-t border-border/60 py-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-6">
+        <p className="font-mono text-xs text-foreground/45">© {new Date().getFullYear()} Ricky Laikhuram</p>
+        <p className="text-xs text-foreground/40 md:ml-2">Designed & built from Manipur, India</p>
         <nav className="flex flex-wrap items-center gap-4 text-sm">
           <button
             className="hover:text-primary transition-colors"

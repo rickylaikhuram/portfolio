@@ -1,125 +1,50 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
 import { sortedExperiences } from "@/data/experiences";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-4">
-            Professional Experience
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            Hands-on experience in full-stack development and innovative
-            technology solutions
-          </p>
+    <section id="experience" className="py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">Experience</p>
+            <h2 className="text-4xl font-bold tracking-[-0.04em] md:text-5xl">Where I&apos;ve been building.</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-foreground/55">A timeline of the teams, products, and systems that have shaped how I work.</p>
         </motion.div>
 
-        <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="relative ml-2 border-l border-border/70 md:ml-5">
           {sortedExperiences.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.4,
-                ease: "easeOut",
-                delay: index * 0.1,
-              }}
-              className="group"
-            >
-              <Card className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02] min-h-[280px] flex flex-col">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <exp.icon className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
-                    <CardTitle className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                      {exp.role}
-                    </CardTitle>
+            <motion.article key={exp.id} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ delay: index * 0.1, duration: 0.6 }} className="group relative pb-12 pl-8 last:pb-0 md:pl-12">
+              <span className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full border-2 border-background bg-primary shadow-[0_0_0_5px] shadow-primary/10 transition-transform duration-300 group-hover:scale-125" />
+              <div className="mb-5 flex flex-col justify-between gap-3 md:flex-row md:items-start">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-xl font-semibold tracking-tight">{exp.role}</h3>
+                    {exp.current && <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-300">Current</span>}
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                      <p className="text-sm text-foreground/70 font-medium">
-                        {exp.company}
-                      </p>
-                      {exp.location && (
-                        <>
-                          <span className="hidden sm:inline text-foreground/30">
-                            •
-                          </span>
-                          <p className="text-sm text-foreground/60">
-                            {exp.location}
-                          </p>
-                        </>
-                      )}
-                    </div>
-                    <span
-                      className={`px-2 py-1 rounded-full text-xs sm:text-sm font-medium border w-fit ${
-                        exp.current
-                          ? "bg-green-500/10 border-green-500/30 text-green-600 dark:text-green-400"
-                          : "bg-muted/30 border-border/30 text-foreground/70"
-                      }`}
-                    >
-                      {exp.period}
-                    </span>
-                  </div>
-                  <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent mt-3" />
-                </CardHeader>
-
-                <CardContent className="flex-1 pt-2">
-                  <div className="grid grid-cols-1 gap-3">
-                    {exp.achievements.map((achievement, idx) => (
-                      <motion.div
-                        key={`${exp.id}-achievement-${idx}`}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{
-                          delay: 0.2 + index * 0.1 + idx * 0.05,
-                          ease: "easeOut",
-                        }}
-                        className="flex items-start group/item"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-foreground/40 to-foreground/20 mr-3 mt-2 group-hover/item:from-foreground/60 group-hover/item:to-foreground/40 transition-all duration-200 flex-shrink-0" />
-                        <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors duration-200 leading-relaxed">
-                          {achievement}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-
-                {/* Subtle background pattern */}
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                  <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-2xl" />
+                  <p className="mt-2 flex items-center gap-2 text-sm text-primary"><BriefcaseBusiness className="h-4 w-4" /> {exp.company} <span className="text-foreground/25">·</span> <span className="text-foreground/50">{exp.location}</span></p>
                 </div>
-              </Card>
-            </motion.div>
+                <span className="font-mono text-xs text-foreground/40">{exp.period}</span>
+              </div>
+              <div className="glass-panel rounded-3xl p-5 md:p-7">
+                <ul className="grid gap-4 md:grid-cols-2">
+                  {exp.achievements.map((achievement) => (
+                    <li key={achievement} className="flex gap-3 text-sm leading-6 text-foreground/65">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
           ))}
         </div>
 
-        {/* Bottom decoration */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 border border-border/30">
-            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-            <span className="text-sm text-foreground/60 font-medium">
-              Open to new opportunities
-            </span>
-          </div>
-        </motion.div>
+        <a href="#projects" className="mt-12 inline-flex items-center gap-2 text-sm font-medium text-foreground/55 transition-colors hover:text-primary">See selected work <ArrowUpRight className="h-4 w-4" /></a>
       </div>
     </section>
   );

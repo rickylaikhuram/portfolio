@@ -2,10 +2,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: "Inter", Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -44,13 +52,13 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #ffffff; /* light background */
+  --background: #f7f9fc;
   --foreground: oklch(0.145 0 0);
-  --card: #f3f4f6; /* light elements */
+  --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
   --popover: #f3f4f6;
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #3b82f6; /* accent */
+  --primary: #475569;
   --primary-foreground: #ffffff;
   --secondary: #f3f4f6;
   --secondary-foreground: oklch(0.205 0 0);
@@ -69,7 +77,7 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: #f3f4f6;
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #3b82f6;
+  --sidebar-primary: #475569;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f3f4f6;
   --sidebar-accent-foreground: oklch(0.205 0 0);
@@ -78,19 +86,19 @@
 }
 
 .dark {
-  --background: #1b1a1f; /* dark background */
+  --background: #0b0d10;
   --foreground: oklch(0.985 0 0);
-  --card: #2a2d2f; /* dark elements */
+  --card: #15181d;
   --card-foreground: oklch(0.985 0 0);
-  --popover: #2a2d2f;
+  --popover: #15181d;
   --popover-foreground: oklch(0.985 0 0);
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --secondary: #2a2d2f;
+  --primary: #91a6ba;
+  --primary-foreground: #0b0d10;
+  --secondary: #15181d;
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: #2a2d2f;
+  --muted: #15181d;
   --muted-foreground: oklch(0.708 0 0);
-  --accent: #2a2d2f;
+  --accent: #20262d;
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -101,11 +109,11 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #2a2d2f;
+  --sidebar: #15181d;
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: #3b82f6;
+  --sidebar-primary: #91a6ba;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #2a2d2f;
+  --sidebar-accent: #20262d;
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
@@ -117,6 +125,90 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 50% -20%, color-mix(in oklab, var(--primary) 7%, transparent), transparent 34rem);
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-feature-settings: "cv11" 1, "ss01" 1;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
+    color: var(--foreground);
+  }
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer utilities {
+  .site-grid {
+    background-image: linear-gradient(to right, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 75%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass-panel {
+    background: color-mix(in oklab, var(--card) 74%, transparent);
+    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    box-shadow: 0 18px 55px color-mix(in oklab, #000 18%, transparent);
+    backdrop-filter: blur(18px);
+  }
+
+  .currently-card {
+    position: relative;
+    isolation: isolate;
+    background: #eef1f4;
+    background: linear-gradient(135deg, #f5f7f9, #e8edf2);
+    border: 1px solid #d6dee6;
+    box-shadow: 0 14px 32px rgb(15 23 42 / 10%);
+  }
+
+  .dark .currently-card {
+    background: linear-gradient(135deg, #1a2027, #15181d);
+    border-color: color-mix(in oklab, var(--primary) 22%, transparent);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
+  }
+
+  .shine-border {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .shine-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, color-mix(in oklab, var(--primary) 55%, transparent), transparent 42%, color-mix(in oklab, #64748b 28%, transparent));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .float-slow {
+    animation: float-slow 7s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

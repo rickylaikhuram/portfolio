@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, Terminal } from "lucide-react";
+import { Menu, Terminal, Youtube } from "lucide-react";
 import { ResumeButton } from "@/components/ResumeButton";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import Image from "next/image";
@@ -17,7 +17,6 @@ import {
   InstagramIcon,
   LinkedInIcon,
   XTwitterIcon,
-  YouTubeIcon,
 } from "./ui/svg";
 
 const SECTIONS = [
@@ -101,6 +100,15 @@ export function Navbar() {
         <GitHubIcon className="h-4 w-4" />
       </a>
       <a
+        href="https://www.youtube.com/@ricky_laikhuram"
+        target="_blank"
+        rel="noreferrer"
+        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
+        aria-label="YouTube"
+      >
+        <Youtube className="h-4 w-4" />
+      </a>
+      <a
         href="https://www.instagram.com/ricky_laikhuram"
         target="_blank"
         rel="noreferrer"
@@ -108,15 +116,6 @@ export function Navbar() {
         aria-label="Instagram"
       >
         <InstagramIcon className="h-4 w-4" />
-      </a>
-      <a
-        href="https://www.youtube.com/@ricky_laikhuram"
-        target="_blank"
-        rel="noreferrer"
-        className="p-3 rounded-2xl text-foreground/60 hover:text-foreground bg-background/50 hover:bg-background transition-all duration-200 cursor-pointer"
-        aria-label="YouTube"
-      >
-        <YouTubeIcon className="h-4 w-4" />
       </a>
       <a
         href="https://x.com/ricky_laikhuram"
@@ -132,7 +131,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border mb-8">
+      <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-border/60 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/55">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="h-16 flex items-center justify-between">
             <button
@@ -190,13 +189,13 @@ export function Navbar() {
               </div>
             </button>
 
-            <nav className="hidden md:flex items-center gap-6">
-              <ul className="flex gap-6">
+            <nav className="hidden md:flex items-center gap-5">
+              <ul className="flex items-center gap-1 rounded-full border border-border/60 bg-card/35 p-1">
                 {SECTIONS.map((s) => (
                   <li key={s.id}>
                     <button
-                      className={`text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
-                        active === s.id ? "text-primary" : "text-foreground/80"
+                      className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all hover:text-primary cursor-pointer ${
+                        active === s.id ? "bg-primary/10 text-primary" : "text-foreground/65"
                       }`}
                       onClick={() => scrollTo(s.id)}
                     >
@@ -205,6 +204,16 @@ export function Navbar() {
                   </li>
                 ))}
               </ul>
+              <a
+                href="https://www.youtube.com/@ricky_laikhuram"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="YouTube"
+                title="YouTube"
+                className="flex h-9 w-9 items-center justify-center rounded-xl text-foreground/60 transition-all duration-300 hover:rotate-6 hover:bg-accent hover:text-foreground active:scale-95"
+              >
+                <Youtube className="h-4 w-4" />
+              </a>
               <ResumeButton variant="outline" className="cursor-pointer" />
               <ThemeToggle />
             </nav>
@@ -216,7 +225,7 @@ export function Navbar() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="transition-transform duration-200 ease-out hover:scale-105 cursor-pointer"
+                    className="cursor-pointer transition-transform duration-300 ease-out hover:rotate-3 active:scale-95"
                   >
                     <Menu className="h-5 w-5" />
                   </Button>

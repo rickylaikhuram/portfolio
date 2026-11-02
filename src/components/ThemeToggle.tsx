@@ -29,7 +29,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggle}
       aria-label="Toggle theme"
-      className="transition-colors"
+      className="transition-transform duration-300 hover:rotate-12 active:scale-95"
     >
       {theme === "dark" ? (
         <Sun className="h-5 w-5" />

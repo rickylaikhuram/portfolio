@@ -34,7 +34,7 @@ export const projects: Project[] = [
     github:
       "https://github.com/rickylaikhuram/ai-powered-rfp-management-system",
     description:
-      "A comprehensive procurement platform that streamlines the Request for Proposal workflow using AI, enabling natural language RFP creation, automated vendor management, email distribution, and intelligent proposal comparison.",
+      "Full-stack procurement platform with conversational AI for natural-language RFP creation, automated vendor emails, and proposal parsing with Google Gemini.",
     tech: [
       "React",
       "TypeScript",
@@ -56,13 +56,14 @@ export const projects: Project[] = [
       "Intelligent proposal comparison with scoring and recommendations",
     ],
     time: "2026",
+    featured: true,
     badge: { label: "Full-Stack Project", icon: Brain },
   },
   {
     title: "RandomHub",
     live: "https://randomhub.app",
     description:
-      "Multi-generator platform with 15+ client-side generators (password, names, QR codes, lorem ipsum, JSON formatter, text converter, wheel spinner, and more) with zero backend dependencies.",
+      "A platform with 20+ client-side tools that reached 200+ monthly users through focused SEO and a fast, zero-backend experience.",
     tech: [
       "Next.js",
       "TypeScript",
@@ -71,37 +72,40 @@ export const projects: Project[] = [
       "Lucide React",
     ],
     features: [
-      "15+ standalone generators",
+      "20+ standalone generators",
       "Client-side only (no backend)",
       "Perfect Lighthouse scores (98 Performance, 100 Accessibility, 100 Best Practices, 100 SEO)",
       "localStorage theme persistence",
     ],
     time: "2025",
+    featured: true,
     badge: { label: "Personal", icon: Rocket },
   },
   {
     title: "E-commerce Website",
-    live: "https://cloverarena.com",
+    live: "https://ecom-clover.pages.dev",
     github: "https://github.com/rickylaikhuram/ecommerce-frontend",
     description:
-      "Full-stack e-commerce platform with product management, wishlist, multi-step forms with drag-and-drop image reordering",
+      "Full-stack store with OTP authentication, transactional emails, Redis caching, and Cloudflare R2 image storage.",
     tech: [
       "TypeScript",
       "React",
       "Redux",
       "Node.js",
-      "Express.js",
+      "Hono",
       "Tailwind CSS",
       "PostgreSQL",
       "Redis",
-      "AWS S3",
+      "Cloudflare Workers",
+      "Cloudflare R2",
     ],
     features: [
       "Redux state management",
       "secure APIs",
-      "AWS S3 presigned uploads",
+      "Cloudflare R2 image storage",
     ],
     time: "2025",
+    featured: true,
     badge: { label: "Freelance", icon: Briefcase },
   },
   {

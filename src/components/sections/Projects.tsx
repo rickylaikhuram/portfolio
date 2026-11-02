@@ -1,243 +1,59 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight, ExternalLink, Github, Layers3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Code2 } from "lucide-react";
 import { projects } from "@/data/project";
-import { techIcons } from "@/types/project";
 
-// ---------- COMPONENT ----------
+const featuredProjects = projects.filter((project) => project.featured);
+const otherProjects = projects.filter((project) => !project.featured);
+
+function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
+  const BadgeIcon = project.badge?.icon;
+  return (
+    <motion.article initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: index * 0.08, duration: 0.55 }} className="group flex h-full flex-col rounded-3xl border border-border/70 bg-card/55 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:bg-card/85 hover:shadow-2xl hover:shadow-primary/5 md:p-7">
+      <div className="flex items-start justify-between gap-4">
+        <span className="font-mono text-xs text-primary">{project.time}</span>
+        {project.badge && BadgeIcon && <span className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1 text-[10px] font-medium text-foreground/55"><BadgeIcon className="h-3 w-3" /> {project.badge.label}</span>}
+      </div>
+      <h3 className="mt-7 text-xl font-semibold leading-tight tracking-tight transition-colors group-hover:text-primary">{project.title}</h3>
+      <p className="mt-4 text-sm leading-6 text-foreground/60">{project.description}</p>
+      <ul className="mt-5 space-y-2">
+        {project.features.slice(0, 3).map((feature) => <li key={feature} className="flex gap-2 text-xs leading-5 text-foreground/50"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary/70" />{feature}</li>)}
+      </ul>
+      <div className="mt-auto flex flex-wrap gap-2 pt-7">
+        {project.tech.slice(0, 5).map((tech) => <span key={tech} className="rounded-lg border border-border/80 bg-muted/35 px-2.5 py-1 text-[11px] text-foreground/55">{tech}</span>)}
+        {project.tech.length > 5 && <span className="px-1 py-1 text-[11px] text-foreground/35">+{project.tech.length - 5}</span>}
+      </div>
+      <div className="mt-7 flex items-center gap-3 border-t border-border/60 pt-5">
+        {project.live && <Button size="sm" asChild><a href={project.live} target="_blank" rel="noreferrer"><ExternalLink className="h-3.5 w-3.5" /> Live demo</a></Button>}
+        {project.github && <Button size="sm" variant="outline" asChild><a href={project.github} target="_blank" rel="noreferrer"><Github className="h-3.5 w-3.5" /> Source</a></Button>}
+      </div>
+    </motion.article>
+  );
+}
+
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 md:py-24">
+    <section id="projects" className="border-t border-border/50 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            A collection of projects that showcase my technical skills and
-            problem-solving abilities
-          </p>
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">Selected work</p>
+            <h2 className="text-4xl font-bold tracking-[-0.04em] md:text-5xl">Things I&apos;ve built.</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-foreground/55">A few products and experiments across AI, commerce, developer tools, and real-time collaboration.</p>
         </motion.div>
 
-        {/* Mobile: Card layout */}
-        <div className="md:hidden space-y-6">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group"
-            >
-              <div className="bg-card/80 backdrop-blur border border-border/50 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] flex flex-col">
-                <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-                  <h3 className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                    {project.title}
-                  </h3>
-                  <div className="flex items-center gap-2">
-                    {project.badge && (
-                      <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
-                        <project.badge.icon className="w-3 h-3" />
-                        {project.badge.label}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex-1 mb-4">
-                  <p className="text-sm text-foreground/80 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.slice(0, 4).map((tech) => {
-                      const Icon = techIcons[tech] || Code2;
-                      return (
-                        <div
-                          key={tech}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200 group/item"
-                        >
-                          <Icon className="h-3.5 w-3.5 text-foreground/60 group-hover/item:text-foreground transition-colors" />
-                          <span className="text-xs font-medium text-foreground/70 group-hover/item:text-foreground transition-colors">
-                            {tech}
-                          </span>
-                        </div>
-                      );
-                    })}
-                    {project.tech.length > 4 && (
-                      <span className="text-xs text-foreground/60 px-2.5 py-1">
-                        +{project.tech.length - 4} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex justify-between">
-                  <div className="flex gap-3">
-                    {project.live && (
-                      <Button
-                        size="sm"
-                        asChild
-                        className="flex items-center gap-2"
-                      >
-                        <a href={project.live} target="_blank" rel="noreferrer">
-                          <ExternalLink className="w-3 h-3" />
-                          Live
-                        </a>
-                      </Button>
-                    )}
-                    {project.github && (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        asChild
-                        className="flex items-center gap-2"
-                      >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <Github className="w-3 h-3" />
-                          GitHub
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-muted/30 border border-border/30 text-foreground/70">
-                    {project.time}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid gap-5 lg:grid-cols-3">
+          {featuredProjects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
         </div>
 
-        {/* Desktop: Timeline layout */}
-        <div className="hidden md:block">
-          <div className="relative">
-            <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-border transform -translate-x-px"></div>
-
-            {projects
-              .sort((a, b) => parseInt(b.time) - parseInt(a.time))
-              .map((project, idx) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="relative flex items-start mb-8 group"
-                >
-                  {/* Timeline dot */}
-                  <div className="relative z-10 mt-1">
-                    <div className="w-3 h-3 bg-border rounded-full group-hover:bg-primary transition-colors duration-200"></div>
-                  </div>
-
-                  {/* Year */}
-                  <div className="ml-6 mr-8 min-w-[60px] pt-0.5">
-                    <span className="text-sm text-foreground/60 font-medium">
-                      {project.time}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="bg-card/80 backdrop-blur border border-border/50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:bg-card/90 transition-all duration-300 hover:scale-[1.01] relative overflow-hidden">
-                      <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-                        <h4 className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors flex items-center gap-3">
-                          {project.title}
-                          <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent w-16" />
-                        </h4>
-                        {project.badge && (
-                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
-                            <project.badge.icon className="w-3.5 h-3.5" />
-                            {project.badge.label}
-                          </span>
-                        )}
-                      </div>
-
-                      <p className="text-sm text-foreground/80 mb-4 leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((tech) => {
-                          const Icon = techIcons[tech] || Code2;
-                          return (
-                            <div
-                              key={tech}
-                              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-muted/40 border border-border/50 hover:border-border hover:bg-muted/60 transition-all duration-200 group/item"
-                            >
-                              <Icon className="h-3.5 w-3.5 text-foreground/60 group-hover/item:text-foreground transition-colors" />
-                              <span className="text-xs font-medium text-foreground/70 group-hover/item:text-foreground transition-colors">
-                                {tech}
-                              </span>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      <div className="flex gap-3">
-                        {project.live && (
-                          <Button
-                            size="sm"
-                            variant="default"
-                            asChild
-                            className="h-8 text-xs"
-                          >
-                            <a
-                              href={project.live}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="flex items-center gap-1.5"
-                            >
-                              <ExternalLink className="w-3 h-3" />
-                              Live
-                            </a>
-                          </Button>
-                        )}
-                        {project.github && (
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            asChild
-                            className="h-8 text-xs"
-                          >
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="flex items-center gap-1.5"
-                            >
-                              <Github className="w-3 h-3" />
-                              Code
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-
-                      <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                        <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-2xl" />
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-          </div>
+        <div className="mt-16 flex items-center gap-3"><Layers3 className="h-4 w-4 text-primary" /><h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground/55">More experiments</h3><span className="h-px flex-1 bg-border/70" /></div>
+        <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {otherProjects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
         </div>
+        <a href="https://github.com/rickylaikhuram" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-foreground/55 transition-colors hover:text-primary">Explore more on GitHub <ArrowUpRight className="h-4 w-4" /></a>
       </div>
     </section>
   );

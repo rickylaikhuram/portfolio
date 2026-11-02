@@ -1,145 +1,51 @@
 "use client";
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ResumeButton } from "@/components/ResumeButton";
-import { User, GraduationCap, Briefcase, Languages } from "lucide-react";
 
-const aboutInfo = [
-  {
-    title: "Education",
-    content:
-      "Bachelor of Engineering in Computer Science (Aug 2021 - May 2025), Manipur Institute of Technology",
-    icon: GraduationCap,
-  },
-  {
-    title: "Recent Experience",
-    content:
-      "Associate Full Stack Developer at Openthrive (Mar 2026 - Present)",
-    icon: Briefcase,
-  },
-  {
-    title: "Languages",
-    content: "English, Hindi, Manipuri (Native)",
-    icon: Languages,
-  },
-];
+import { motion } from "framer-motion";
+import { ArrowUpRight, Award, GraduationCap, MapPin, Sparkles } from "lucide-react";
+import { ResumeButton } from "@/components/ResumeButton";
+
+const focusAreas = ["Product engineering", "Real-time systems", "AI workflows", "Edge infrastructure"];
 
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24">
+    <section id="about" className="border-t border-border/50 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-4">
-            About Me
-          </h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            A web developer exploring new tech and learning to become a better
-            engineer.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {/* Personal Statement Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              type: "spring",
-              stiffness: 100,
-            }}
-            className="group"
-          >
-            <Card className="relative overflow-hidden rounded-3xl border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02] min-h-[280px] flex flex-col">
-              <CardHeader className="">
-                <div className="flex items-center gap-3 mb-2">
-                  <User className="h-6 w-6 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
-                  <CardTitle className="text-lg font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                    My Path in Tech
-                  </CardTitle>
-                </div>
-                <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
-              </CardHeader>
-
-              <CardContent className="flex-1 flex flex-col">
-                <div className="flex-1">
-                  <p className="text-sm text-foreground/80 leading-relaxed mb-4">
-                    I develop full-stack web applications professionally and
-                    through freelance work, partnering with clients to bring
-                    their ideas to life.
-                  </p>
-                  <p className="text-sm text-foreground/80 leading-relaxed mb-1">
-                    Currently learning machine learning and AI to broaden my
-                    technical capabilities.
-                  </p>
-                  <p className="text-sm text-foreground/80 leading-relaxed">
-                    I believe in growing through each project and creating
-                    software that makes a difference.
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-auto">
-                  <ResumeButton
-                    variant="outline"
-                    className="w-full cursor-pointer"
-                  />
-                </div>
-              </CardContent>
-
-              {/* Subtle background pattern */}
-              <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-2xl" />
-              </div>
-            </Card>
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <p className="mb-4 flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary"><Sparkles className="h-3.5 w-3.5" /> A little about me</p>
+            <h2 className="max-w-lg text-4xl font-bold tracking-[-0.04em] md:text-5xl">Curious by default. <span className="text-foreground/45">Deliberate in the details.</span></h2>
+            <p className="mt-6 max-w-md leading-7 text-foreground/60">I enjoy turning fuzzy problems into clear, useful software. My work sits at the intersection of robust backend systems, expressive interfaces, and the infrastructure that connects them.</p>
+            <p className="mt-4 max-w-md leading-7 text-foreground/60">Currently, I&apos;m building production platforms at Openthrive while exploring better ways to use AI in everyday workflows.</p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {focusAreas.map((area) => <span key={area} className="rounded-full border border-border bg-muted/40 px-3 py-1.5 text-xs text-foreground/65">{area}</span>)}
+            </div>
+            <div className="mt-9"><ResumeButton variant="outline" /></div>
           </motion.div>
 
-          {/* Information Cards */}
-          <div className="space-y-6">
-            {aboutInfo.map((info, idx) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: idx * 0.1,
-                  type: "spring",
-                  stiffness: 100,
-                }}
-                className="group"
-              >
-                <Card className="relative overflow-hidden rounded-3xl border-border/50 bg-card/80 backdrop-blur-sm hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 group-hover:scale-[1.02]">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <info.icon className="h-5 w-5 text-foreground/70 group-hover:text-foreground group-hover:scale-110 transition-all duration-300" />
-                      <CardTitle className="text-base font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
-                        {info.title}
-                      </CardTitle>
-                    </div>
-                    <div className="h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
-                  </CardHeader>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-panel rounded-3xl p-6 sm:col-span-2">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary"><GraduationCap className="h-5 w-5" /></div>
+                <span className="font-mono text-xs text-foreground/40">2021 — 2025</span>
+              </div>
+              <p className="mt-7 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Education</p>
+              <h3 className="mt-2 text-xl font-semibold">Bachelor of Engineering in Computer Science</h3>
+              <p className="mt-2 flex items-center gap-1.5 text-sm text-foreground/55"><MapPin className="h-3.5 w-3.5" /> Manipur Institute of Technology · Manipur, India</p>
+            </motion.div>
 
-                  <CardContent>
-                    <p className="text-sm text-foreground/80 leading-relaxed">
-                      {info.content}
-                    </p>
-                  </CardContent>
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.5 }} className="glass-panel rounded-3xl p-6">
+              <Award className="h-5 w-5 text-amber-300" />
+              <p className="mt-7 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Recognition</p>
+              <h3 className="mt-2 font-semibold leading-6">Robert Memorial Internship Award</h3>
+              <p className="mt-2 text-sm leading-6 text-foreground/55">MaolKeki Foundation · Jul 2025</p>
+              <a href="https://e-pao.net/epSubPageExtractor.asp?src=education.Education_Announcements.Edn_Ann_2025.MaolKeki_Foundation_Robert_Memorial_Internship_Awarded_20250723" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-1 text-xs font-medium text-primary transition-colors hover:text-primary/75">Read the feature <ArrowUpRight className="h-3 w-3" /></a>
+            </motion.div>
 
-                  {/* Subtle background pattern */}
-                  <div className="absolute top-0 right-0 w-20 h-20 opacity-5">
-                    <div className="w-full h-full bg-gradient-to-bl from-foreground to-transparent rounded-full blur-xl" />
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.16, duration: 0.5 }} className="currently-card relative z-10 rounded-3xl p-6">
+              <p className="font-mono text-xs text-primary">CURRENTLY</p>
+              <p className="mt-7 text-2xl font-semibold tracking-tight">Making complex systems feel simple.</p>
+              <p className="mt-3 text-sm leading-6 text-foreground/55">From document processing to collaborative docs and real-time messaging.</p>
+            </motion.div>
           </div>
         </div>
       </div>

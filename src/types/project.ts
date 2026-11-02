@@ -29,12 +29,15 @@ type Tech =
   | "React"
   | "Redux"
   | "Node.js"
+  | "Hono"
   | "Express.js"
   | "Tailwind CSS"
   | "Next.js"
   | "PostgreSQL"
   | "Redis"
   | "AWS S3"
+  | "Cloudflare Workers"
+  | "Cloudflare R2"
   | "MongoDB"
   | "JavaScript"
   | "React Router DOM"
@@ -62,6 +65,7 @@ export interface Project {
   tech: Tech[];
   features: string[];
   time: string;
+  featured?: boolean;
   badge?: { label: string; icon: IconType };
 }
 
@@ -71,11 +75,14 @@ export const techIcons: Record<Tech, IconType> = {
   React: Layers,
   Redux: Workflow,
   "Node.js": Server,
+  Hono: Server,
   "Express.js": Network,
   "Tailwind CSS": Paintbrush,
   PostgreSQL: Database,
   Redis: Boxes,
   "AWS S3": Cloud,
+  "Cloudflare Workers": Cloud,
+  "Cloudflare R2": Cloud,
   MongoDB: Database,
   JavaScript: FileJson,
   "React Router DOM": Route,

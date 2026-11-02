@@ -5,9 +5,10 @@ import ThemeProvider from "@/components/ThemeProvider";
 import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rickylaikhuram.pages.dev"),
   title: "Ricky Laikhuram | Software Engineer & Developer Portfolio",
   description:
-    "Portfolio of Ricky Laikhuram, showcasing software engineering projects, web development skills, and contact info for collaborations.",
+    "Ricky Laikhuram is a full-stack developer building production platforms, real-time systems, and AI-powered workflows with TypeScript, React, Node.js, and PostgreSQL.",
   keywords: [
     "Ricky Laikhuram",
     "Software Engineer",
